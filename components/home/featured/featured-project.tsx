@@ -1,4 +1,5 @@
 import React from "react";
+import ProductGrid from "./product-grid";
 
 type Props = {
   children?: React.ReactNode;
@@ -13,6 +14,10 @@ export default function FeaturedProject({}: Props) {
           <h3 className="text-3xl font-semibold">
             We provide the Perfect Solution to your business growth
           </h3>
+        </div>
+        {/* project grid  */}
+        <div className="py-12">
+          <ProductGrid />
         </div>
       </div>
     </section>

@@ -17,3 +17,15 @@ export const getStatList = async () => {
   const res = await axios.get("https://agency.teamrabbil.com/api/StatList");
   return res.data;
 };
+
+export const getFeaturedProject = async () => {
+  const res = await axios.get(
+    "https://agency.teamrabbil.com/api/FeaturedProject"
+  );
+  return res.data;
+};
+
+export const getTeamList = async () => {
+  const res = await axios.get("https://agency.teamrabbil.com/api/TeamList");
+  return res.data;
+};

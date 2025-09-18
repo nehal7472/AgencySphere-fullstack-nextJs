@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/layout/navbar/navbar";
 import Footer from "@/components/layout/footer/Footer";
+import SubscribeSection from "@/components/layout/subscribe/subscribe-section";
 
 export const metadata: Metadata = {
   title: "Agency Web",
@@ -26,6 +27,7 @@ export default function RootLayout({
         >
           <Navbar />
           <div>{children}</div>
+          <SubscribeSection />
           <Footer />
         </ThemeProvider>
       </body>

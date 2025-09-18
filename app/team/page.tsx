@@ -1,3 +1,5 @@
+import PageHeader from "@/components/page-header";
+import TeamSection from "@/components/team/team-section";
 import React from "react";
 
 type Props = {
@@ -5,5 +7,13 @@ type Props = {
 };
 
 export default function TeamPage({}: Props) {
-  return <div>TeamPage</div>;
+  return (
+    <>
+      <PageHeader
+        title="Team"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Team" }]}
+      />
+      <TeamSection />
+    </>
+  );
 }
