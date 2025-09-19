@@ -18,17 +18,17 @@ interface TeamMemberProps {
 export default async function TeamSection() {
   const teamNumbers: TeamMemberProps[] = await getTeamList();
   return (
-    <section className="py-12 px-4 md:px-8 dark:bg-gray-900">
-      <div className="text-center mb-10">
+    <section className="py-12 px-2 md:px-4  max-w-6xl mx-auto">
+      <div className=" mb-10 ">
         <p className="text-sm font-semibold text-green-600 uppercase">
           Our Team Member
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold mt-2">
+        <h2 className="text-2xl md:text-3xl font-bold mt-2 max-w-96">
           Check our awesome team members
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
         {teamNumbers.slice(0, 3).map((member) => (
           <Card
             key={member.id}

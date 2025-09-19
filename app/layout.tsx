@@ -28,7 +28,7 @@ export default function RootLayout({
           <Navbar />
           <div>{children}</div>
           <SubscribeSection />
-          <Footer />
+          <Footer /> 
         </ThemeProvider>
       </body>
     </html>

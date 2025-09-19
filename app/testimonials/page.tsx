@@ -1,3 +1,5 @@
+import PageHeader from "@/components/page-header";
+import TestimonialSection from "@/components/testimonials/testinibial-section";
 import React from "react";
 
 type Props = {
@@ -5,5 +7,16 @@ type Props = {
 };
 
 export default function TestimonialsPage({}: Props) {
-  return <div>TestimonialsPage</div>;
+  return (
+    <>
+      <PageHeader
+        title="Testimonial List"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Testimonial List" },
+        ]}
+      />
+      <TestimonialSection />
+    </>
+  );
 }
