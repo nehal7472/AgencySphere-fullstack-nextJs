@@ -1,17 +1,18 @@
-import { getStatList, getWorkList } from "@/lib/services";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { getWorkList, getStatList } from "@/lib/services";
 import {
   ArrowRight,
-  Badge,
-  Heart,
-  Instagram,
   Users,
   ThumbsUp,
   Smile,
   Folder,
+  Instagram,
+  Heart,
+  Badge,
 } from "lucide-react";
-import React from "react";
 import StatList from "./stat-list";
 
+// Card type
 type CardProps = {
   id: number;
   title: string;
@@ -19,6 +20,7 @@ type CardProps = {
   link: string;
 };
 
+// Stat type
 type StatListData = {
   followers: string | number;
   solved: string | number;
@@ -26,7 +28,7 @@ type StatListData = {
   projects: string | number;
 };
 
-// icon mapping instead of map inside render
+// Icon mapping
 const IconMap: Record<number, React.ReactNode> = {
   1: <Instagram size={30} color="black" />,
   2: <Heart size={30} color="black" />,
@@ -34,8 +36,17 @@ const IconMap: Record<number, React.ReactNode> = {
 };
 
 export default async function WorkList() {
-  const cardData: CardProps[] = await getWorkList();
-  const stats: StatListData = await getStatList();
+  const works = await getWorkList();
+
+  // ✅ Work[] → CardProps[]
+  const cardData: CardProps[] = works.map((w) => ({
+    id: w.id,
+    title: w.title,
+    des: w.description,
+    link: `/work/${w.id}`, // যদি API তে link না থাকে, dynamic বানানো
+  }));
+
+  const Stats: StatListData = await getStatList();
 
   return (
     <section className="bg-white dark:bg-gray-900 transition-colors">
@@ -79,10 +90,26 @@ export default async function WorkList() {
 
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-10 mt-12">
-          <StatList icon={<Users size={40} />} value={stats.followers} label="Followers" />
-          <StatList icon={<ThumbsUp size={40} />} value={stats.solved} label="Solved Problems" />
-          <StatList icon={<Smile size={40} />} value={stats.customers} label="Happy Customers" />
-          <StatList icon={<Folder size={40} />} value={stats.projects} label="Projects" />
+          <StatList
+            icon={<Users size={40} />}
+            value={stats.followers}
+            label="Followers"
+          />
+          <StatList
+            icon={<ThumbsUp size={40} />}
+            value={stats.solved}
+            label="Solved Problems"
+          />
+          <StatList
+            icon={<Smile size={40} />}
+            value={stats.customers}
+            label="Happy Customers"
+          />
+          <StatList
+            icon={<Folder size={40} />}
+            value={stats.projects}
+            label="Projects"
+          />
         </div>
       </div>
     </section>
