@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import api from "./api";
 
-// Reusable fetcher with error handling
+
 const fetchData = async <T>(endpoint: string): Promise<T> => {
   try {
     const res = await api.get<T>(endpoint); // directly <T>
