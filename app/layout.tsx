@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/layout/navbar/navbar";
-import Footer from "@/components/layout/footer/Footer";
-import SubscribeSection from "@/components/layout/subscribe/subscribe-section";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/Footer";
+import SubscribeSection from "@/components/layout/subscribe-section";
 
 export const metadata: Metadata = {
   title: {
@@ -32,31 +32,7 @@ export const metadata: Metadata = {
       "We build modern websites, stunning brands, and effective marketing strategies. Let’s grow your business together with AgencySphere.",
     url: "https://www.agencysphere.com",
     siteName: "AgencySphere",
-    images: [
-      {
-        url: "https://www.agencysphere.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AgencySphere - Creative Digital Agency",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AgencySphere | Creative Digital Agency",
-    description:
-      "Your partner in web design, development, and digital growth. 🚀",
-    images: ["https://www.agencysphere.com/og-image.jpg"],
-    creator: "@AgencySphere",
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  category: "business",
-};
+}};
 
 export default function RootLayout({
   children,
