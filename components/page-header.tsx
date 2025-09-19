@@ -24,19 +24,22 @@ export default function PageHeader({
     <div
       className={cn(
         "w-full py-8 px-4 md:px-8 rounded-lg",
-        "bg-gray-50 dark:bg-gray-900", // background switches on dark
+        "bg-gray-50 dark:bg-gray-900",
         className
       )}
     >
       <div className="max-w-6xl mx-auto">
         {/* Title */}
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
           {title}
         </h1>
 
         {/* Breadcrumbs */}
         {breadcrumbs.length > 0 && (
-          <nav className="mt-2 flex items-center text-sm space-x-2">
+          <nav
+            className="mt-2 flex flex-wrap items-center text-sm"
+            aria-label="Breadcrumb"
+          >
             {breadcrumbs.map((crumb, i) => (
               <div key={i} className="flex items-center">
                 {crumb.href ? (

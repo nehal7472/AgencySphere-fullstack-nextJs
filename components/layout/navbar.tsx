@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { ModeToggle } from "@/components/theme-toggle";
+import { Menu } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 bg-green-100 dark:bg-gray-900 transition-colors z-40">
+    <header className="sticky top-0 bg-green-100 dark:bg-gray-900 transition-colors z-40 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <Link
@@ -51,7 +52,7 @@ export default function Navbar() {
                 `}
               >
                 {link.label}
-                {/* Underline animation (active stays full width) */}
+                {/* underline animation */}
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-green-600 dark:bg-green-400 transition-all duration-300 
                     ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
@@ -65,24 +66,28 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {/* Desktop Only Buttons */}
           <div className="hidden md:flex gap-2">
-            <Button variant="outline" size="sm">
-              Login
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/login">Login</Link>
             </Button>
-            <Button size="sm">Register</Button>
+            <Button size="sm" asChild>
+              <Link href="/register">Register</Link>
+            </Button>
           </div>
 
-          {/* Theme Toggle always visible */}
+          {/* Theme Toggle */}
           <ModeToggle />
 
           {/* Mobile Dropdown */}
           <div className="md:hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button size="sm">Menu</Button>
+                <Button size="icon" variant="outline">
+                  <Menu className="h-5 w-5" />
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200">
                 {links.map((link) => (
-                  <DropdownMenuItem key={link.href}>
+                  <DropdownMenuItem key={link.href} asChild>
                     <Link
                       href={link.href}
                       className={`font-bold ${
@@ -95,12 +100,10 @@ export default function Navbar() {
                     </Link>
                   </DropdownMenuItem>
                 ))}
-
-                {/* Mobile Login/Register inside dropdown */}
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/login">Login</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/register">Register</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>

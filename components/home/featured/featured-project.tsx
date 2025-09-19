@@ -1,11 +1,7 @@
 import React from "react";
 import ProductGrid from "./product-grid";
 
-type Props = {
-  children?: React.ReactNode;
-};
-
-export default function FeaturedProject({}: Props) {
+export default function FeaturedProject() {
   return (
     <section className="bg-green-100 dark:bg-gray-900 transition-colors">
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -15,7 +11,8 @@ export default function FeaturedProject({}: Props) {
             We provide the Perfect Solution to your business growth
           </h3>
         </div>
-        {/* project grid  */}
+
+        {/* project grid */}
         <div className="py-12">
           <ProductGrid />
         </div>

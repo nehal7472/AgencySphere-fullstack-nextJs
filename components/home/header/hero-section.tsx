@@ -14,8 +14,7 @@ type HeroItems = {
 };
 
 export default async function HeroSection() {
-  const res = await getHero();
-  const heroData: HeroItems = await res.data;
+  const heroData: HeroItems = await getHero();
 
   return (
     <section className="bg-green-100 dark:bg-gray-900 transition-colors py-12 relative overflow-hidden">
@@ -33,47 +32,49 @@ export default async function HeroSection() {
 
         {/* Right Images - Staggered Collage */}
         <div className="relative w-full h-[400px] md:h-[500px]">
-          {/* Image 1 - Large */}
           <div className="absolute top-0 left-0 w-40 h-56 md:w-48 md:h-64 rounded-2xl overflow-hidden shadow-lg">
             <Image
               src={heroData.image1}
-              alt="Image 1"
+              alt={`${heroData.title} main visual`}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
 
-          {/* Image 2 - Circle */}
           <div className="absolute top-20 left-32 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-md">
             <Image
               src={heroData.image2}
-              alt="Image 2"
+              alt={`${heroData.title} secondary visual`}
               fill
+              sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover"
             />
           </div>
 
-          {/* Image 3 - Horizontal */}
           <div className="absolute bottom-0 left-16 w-64 h-40 md:w-80 md:h-48 rounded-xl overflow-hidden shadow-lg">
             <Image
               src={heroData.image3}
-              alt="Image 3"
+              alt={`${heroData.title} showcase`}
               fill
+              sizes="(max-width: 768px) 100vw, 60vw"
               className="object-cover"
             />
           </div>
 
-          {/* Image 4 - Vertical */}
           <div className="absolute top-10 right-0 w-32 h-48 md:w-40 md:h-56 rounded-xl overflow-hidden shadow-xl">
             <Image
               src={heroData.image4}
-              alt="Image 4"
+              alt={`${heroData.title} highlight`}
               fill
+              sizes="(max-width: 768px) 100vw, 30vw"
               className="object-cover"
             />
           </div>
         </div>
       </div>
+
+      {/* Brand List */}
       <div className="mt-12">
         <BrandList />
       </div>

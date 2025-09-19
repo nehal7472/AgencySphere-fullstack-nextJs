@@ -6,10 +6,19 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 
+const quickLinks = [
+  { label: "Services", href: "#" },
+  { label: "Portfolio", href: "#" },
+  { label: "About Us", href: "#" },
+  { label: "Contact Us", href: "#" },
+];
+
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="bg-black text-white py-12">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {/* Left Section - Logo & Socials */}
         <div>
           <h2 className="text-xl font-bold">WEB LOGO</h2>
@@ -20,35 +29,23 @@ export default function Footer() {
 
           {/* Social icons */}
           <div className="flex space-x-3 mt-4">
-            <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-green-600 hover:bg-green-700 transition"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-green-600 hover:bg-green-700 transition"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-green-600 hover:bg-green-700 transition"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="#"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-green-600 hover:bg-green-700 transition"
-            >
-              <FaInstagram />
-            </a>
+            {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map(
+              (Icon, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-green-600 hover:bg-green-700 transform hover:scale-110 transition"
+                  aria-label="social-link"
+                >
+                  <Icon />
+                </a>
+              )
+            )}
           </div>
 
           {/* Copyright */}
           <p className="mt-6 text-gray-500 text-sm">
-            Copyright Design Agency 2022
+            © {year} Design Agency. All rights reserved.
           </p>
         </div>
 
@@ -56,26 +53,13 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-gray-400">
-            <li>
-              <a href="#" className="hover:text-white transition">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition">
-                Portfolio
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition">
-                Contact Us
-              </a>
-            </li>
+            {quickLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="hover:text-white transition">
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 

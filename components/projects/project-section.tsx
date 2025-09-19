@@ -14,22 +14,23 @@ type ProjectListProps = {
 
 export default async function ProjectSection() {
   const ProjectDetails: ProjectListProps[] = await getAllProjectList();
+
   return (
-    <section className="py-12 px-2 md:px-4  max-w-6xl mx-auto">
-      <div className=" mb-10 max-w-96">
-        <p className="text-sm font-semibold text-green-600 uppercase">
-          All Project
+    <section className="py-16 px-4 max-w-7xl mx-auto">
+      {/* Section Heading */}
+      <div className="mb-12 text-center max-w-2xl mx-auto">
+        <p className="text-sm font-semibold text-green-600 uppercase tracking-wide">
+          All Projects
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold mt-2">
-          Better Agency/SEO Solution At Your Fingertips
+        <h2 className="text-2xl md:text-3xl font-bold mt-2 text-gray-900 dark:text-white">
+          Better Agency & SEO Solutions At Your Fingertips
         </h2>
       </div>
-      {/* project card  */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* Project Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {ProjectDetails.map((items) => (
-          <div key={items.id}>
-            <ProjectCard items={items} />
-          </div>
+          <ProjectCard key={items.id} items={items} />
         ))}
       </div>
     </section>
