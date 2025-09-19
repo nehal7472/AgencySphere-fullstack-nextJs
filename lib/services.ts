@@ -39,8 +39,22 @@ export type Stat = {
 export type Project = {
   id: number;
   title: string;
+  image: string;
+  remark: string;
+  live: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type FeaturedProject = {
+  id: number;
+  title: string;
   description: string;
   image: string;
+  live: string;
+  remark: string;
+  created_at: string;
+  updated_at: string;
 };
 
 export type Team = {
@@ -86,7 +100,7 @@ export const getWorkList = () => fetchData<Work[]>("/WorkList");
 export const getStatList = () => fetchData<Stat[]>("/StatList");
 
 export const getFeaturedProject = () =>
-  fetchData<Project[]>("/FeaturedProject");
+  fetchData<FeaturedProject[]>("/FeaturedProject");
 
 export const getTeamList = () => fetchData<Team[]>("/TeamList");
 

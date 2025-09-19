@@ -1,16 +1,6 @@
-import { getFeaturedProject } from "@/lib/services";
+import { getFeaturedProject, FeaturedProject } from "@/lib/services";
 import Image from "next/image";
 import React from "react";
-
-type FeaturedProject = {
-  id: number;
-  title: string;
-  image: string;
-  live: string;
-  remark: string;
-  created_at: string;
-  updated_at: string;
-};
 
 export default async function ProductGrid() {
   const featuredProjects: FeaturedProject[] = await getFeaturedProject();
