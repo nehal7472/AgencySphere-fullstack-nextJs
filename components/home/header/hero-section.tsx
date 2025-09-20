@@ -1,79 +1,61 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { getHero } from "@/lib/services";
-import BrandList from "./brand-list";
-
-type HeroItems = {
-  id: number;
-  title: string;
-  description: string;
-  image1: string;
-  image2: string;
-  image3: string;
-  image4: string;
-};
+import { getHero, HeroItem } from "@/services/apiService"; // adjust path
 
 export default async function HeroSection() {
-  const heroData: HeroItems[] = await getHero();
+  const heroData: HeroItem[] = await getHero();
+
+  // fallback if no data
+  if (!heroData || heroData.length === 0) {
+    return (
+      <section className="bg-green-100 dark:bg-gray-900 py-12 text-center">
+        <p className="text-gray-500 dark:text-gray-400">
+          No hero content available.
+        </p>
+      </section>
+    );
+  }
+
   const hero = heroData[0];
 
   return (
     <section className="bg-green-100 dark:bg-gray-900 transition-colors py-12 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
             {hero.title}
           </h1>
-          <p className="text-gray-700 dark:text-gray-300 mb-6">
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
             {hero.description}
           </p>
-          <Button size="lg">Get Started</Button>
+          <button className="px-6 py-3 bg-emerald-500 text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-600 transition">
+            Get Started
+          </button>
         </div>
 
         {/* Right Images */}
-        <div className="relative w-full h-[400px] md:h-[500px]">
-          <div className="absolute top-0 left-0 w-40 h-56 md:w-48 md:h-64 rounded-2xl overflow-hidden shadow-lg">
-            <Image
+        <div className="flex gap-4">
+          {hero.image1 && (
+            <img
               src={hero.image1}
-              alt={hero.title}
-              fill
-              className="object-cover"
+              alt="Hero image 1"
+              className="w-1/3 rounded-xl shadow-lg object-cover"
             />
-          </div>
-
-          <div className="absolute top-20 left-32 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-md">
-            <Image
+          )}
+          {hero.image2 && (
+            <img
               src={hero.image2}
-              alt={hero.title}
-              fill
-              className="object-cover"
+              alt="Hero image 2"
+              className="w-1/3 rounded-xl shadow-lg object-cover"
             />
-          </div>
-
-          <div className="absolute bottom-0 left-16 w-64 h-40 md:w-80 md:h-48 rounded-xl overflow-hidden shadow-lg">
-            <Image
+          )}
+          {hero.image3 && (
+            <img
               src={hero.image3}
-              alt={hero.title}
-              fill
-              className="object-cover"
+              alt="Hero image 3"
+              className="w-1/3 rounded-xl shadow-lg object-cover"
             />
-          </div>
-
-          <div className="absolute top-10 right-0 w-32 h-48 md:w-40 md:h-56 rounded-xl overflow-hidden shadow-xl">
-            <Image
-              src={hero.image4}
-              alt={hero.title}
-              fill
-              className="object-cover"
-            />
-          </div>
+          )}
         </div>
-      </div>
-
-      {/* Brand List */}
-      <div className="mt-12">
-        <BrandList />
       </div>
     </section>
   );
