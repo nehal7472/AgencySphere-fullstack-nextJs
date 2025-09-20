@@ -19,9 +19,14 @@ export default async function TeamSection() {
   const teamNumbers: TeamMemberProps[] = await getTeamList();
 
   return (
+<<<<<<< HEAD
     <section className="py-12 px-4 max-w-6xl mx-auto">
       {/* Section Title */}
       <div className="mb-10 text-center">
+=======
+    <section className="py-12 px-4 md:px-8 dark:bg-gray-900">
+      <div className="text-center mb-10">
+>>>>>>> parent of a86c610 (Project is ready to submit)
         <p className="text-sm font-semibold text-green-600 uppercase">
           Our Team Members
         </p>
@@ -30,8 +35,12 @@ export default async function TeamSection() {
         </h2>
       </div>
 
+<<<<<<< HEAD
       {/* Team Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+=======
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+>>>>>>> parent of a86c610 (Project is ready to submit)
         {teamNumbers.slice(0, 3).map((member) => (
           <Card
             key={member.id}

@@ -1,5 +1,7 @@
+import axios from "axios";
 import api from "./api";
 
+<<<<<<< HEAD
 // ✅ Generic response wrapper
 type ApiResponse<T> = {
   status?: string;
@@ -62,6 +64,35 @@ export type Team = {
   name: string;
   image: string;
   designation: string;
+=======
+export const getHero = () => api.get("/HeroList");
+
+export const getBrandList = async () => {
+  const res = await axios.get("https://agency.teamrabbil.com/api/BrandList");
+  return res.data;
+};
+
+export const getWorkList = async () => {
+  const res = await axios.get("https://agency.teamrabbil.com/api/WorkList");
+  return res.data;
+};
+
+export const getStatList = async () => {
+  const res = await axios.get("https://agency.teamrabbil.com/api/StatList");
+  return res.data;
+};
+
+export const getFeaturedProject = async () => {
+  const res = await axios.get(
+    "https://agency.teamrabbil.com/api/FeaturedProject"
+  );
+  return res.data;
+};
+
+export const getTeamList = async () => {
+  const res = await axios.get("https://agency.teamrabbil.com/api/TeamList");
+  return res.data;
+>>>>>>> parent of a86c610 (Project is ready to submit)
 };
 
 export type Service = {

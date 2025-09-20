@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,18 +11,12 @@ import { ModeToggle } from "@/components/theme-toggle";
 import { Menu } from "lucide-react";
 
 export default function Navbar() {
-  const pathname = usePathname();
-
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/team", label: "Team" },
-    { href: "/services", label: "Service" },
-    { href: "/projects", label: "Projects" },
-    { href: "/testimonials", label: "Testimonials" },
-  ];
-
   return (
+<<<<<<< HEAD:components/layout/navbar.tsx
     <header className="sticky top-0 bg-green-100 dark:bg-gray-900 transition-colors z-40 shadow-sm">
+=======
+    <header className=" sticky top-0  bg-green-100 dark:bg-gray-900 transition-colors z-40">
+>>>>>>> parent of a86c610 (Project is ready to submit):components/layout/navbar/navbar.tsx
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <Link
@@ -35,8 +26,9 @@ export default function Navbar() {
           AGENCY<span className="text-orange-500">SPHERE</span>
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Menu */}
         <nav className="hidden md:flex space-x-6 items-center">
+<<<<<<< HEAD:components/layout/navbar.tsx
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -60,10 +52,43 @@ export default function Navbar() {
               </Link>
             );
           })}
+=======
+          <Link
+            href="/"
+            className="text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 transition-colors font-bold"
+          >
+            Home
+          </Link>
+          <Link
+            href="/team"
+            className="text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 transition-colors font-bold"
+          >
+            Team
+          </Link>
+          <Link
+            href="/services"
+            className="text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 transition-colors font-bold"
+          >
+            Service
+          </Link>
+          <Link
+            href="/projects"
+            className="text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 transition-colors font-bold"
+          >
+            Projects
+          </Link>
+          <Link
+            href="/testimonials"
+            className="text-gray-800 dark:text-gray-200 hover:text-green-700 dark:hover:text-green-400 transition-colors font-bold"
+          >
+            Testimonials
+          </Link>
+>>>>>>> parent of a86c610 (Project is ready to submit):components/layout/navbar/navbar.tsx
         </nav>
 
         {/* Buttons & Toggle */}
         <div className="flex items-center gap-4">
+<<<<<<< HEAD:components/layout/navbar.tsx
           {/* Desktop Only Buttons */}
           <div className="hidden md:flex gap-2">
             <Button variant="outline" size="sm" asChild>
@@ -75,6 +100,13 @@ export default function Navbar() {
           </div>
 
           {/* Theme Toggle */}
+=======
+          <Button variant="outline" size="sm">
+            Login
+          </Button>
+          <Button size="sm">Register</Button>
+
+>>>>>>> parent of a86c610 (Project is ready to submit):components/layout/navbar/navbar.tsx
           <ModeToggle />
 
           {/* Mobile Dropdown */}
@@ -86,6 +118,7 @@ export default function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200">
+<<<<<<< HEAD:components/layout/navbar.tsx
                 {links.map((link) => (
                   <DropdownMenuItem key={link.href} asChild>
                     <Link
@@ -106,6 +139,15 @@ export default function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link href="/register">Register</Link>
                 </DropdownMenuItem>
+=======
+                {["Home", "Team", "Service", "Projects", "Testimonials"].map(
+                  (item) => (
+                    <DropdownMenuItem key={item}>
+                      <Link href={`/${item.toLowerCase()}`}>{item}</Link>
+                    </DropdownMenuItem>
+                  )
+                )}
+>>>>>>> parent of a86c610 (Project is ready to submit):components/layout/navbar/navbar.tsx
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
